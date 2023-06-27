@@ -72,18 +72,18 @@ func EjecutoLambda( ctx context.Context, request events.APIGatewayProxyRequest) 
 		return res, nil
 	}
 
-	restAPI := handlers.Manjenadores(awsgo.Ctx, request)
-	if restAPI.CustomResp == nil {
+	respAPI := handlers.Manjenadores(awsgo.Ctx, request)
+	if respAPI.CustomResp == nil {
 		res = &events.APIGatewayProxyResponse{
-			StatusCode: restAPI.Status,
-			Body: restAPI.Message,
+			StatusCode: respAPI.Status,
+			Body: respAPI.Message,
 			Headers: map[string]string{
 				"Content-Type": "application/json",
 			},
 		}				
 		return res, nil
 	} else {
-		return restAPI.CustomResp, nil
+		return respAPI.CustomResp, nil
 	}
 }
 
@@ -102,6 +102,6 @@ func ValidoParametros() bool {
 	if !traeParametro {
 		return traeParametro
 	}
-	
+
 	return traeParametro
 }
