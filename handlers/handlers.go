@@ -24,7 +24,7 @@ func Manjenadores(ctx context.Context, request events.APIGatewayProxyRequest) mo
 	}
 
 
-	switch ctx.Value(models.Key("Method")).(string) {
+	switch ctx.Value(models.Key("method")).(string) {
 	case "POST":
 		switch ctx.Value(models.Key("path")).(string) {
 		case "registro":
