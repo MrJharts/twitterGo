@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	jwt "github.com/golang-jwt/jwt/v5"
-	"github/MrJharts/twitterGo/bd"
+	// "github/MrJharts/twitterGo/bd"
 	"github/MrJharts/twitterGo/models"
 )
 
@@ -23,9 +23,9 @@ func ProcesoToken(tk string, JWTSign string) (*models.Claim, bool, string, error
 
 	tk = strings.TrimSpace(splitToken[1])
 
-	tkn, err := jwt.ParseWithClaims(tk, &claims, func(token *jwt.Token)) (interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(tk, &claims, func(token *jwt.Token) (interface{}, error) {
 		return miClave, nil
-	}
+	})
 	if err == nil {
 		//Rutina que chequea contra la BD
 	}
