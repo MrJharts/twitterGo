@@ -31,6 +31,8 @@ func Manjenadores(ctx context.Context, request events.APIGatewayProxyRequest) mo
 			return routers.Registro(ctx)
 		case "login":
 			return routers.Login(ctx)
+		case "tweet":
+			return routers.GraboTweet(ctx, claim)
 		}		
 		//
 	case "GET":
